@@ -7,7 +7,7 @@ using Gorilla Mux and Gorm With PostgreSQL Driver Dialect
 
 # Design Pattern
 
-![](be-frame.svg)
+![](be.png)
 
 # Thanks To 
 
