@@ -23,3 +23,5 @@ type UserResponse struct {
 }
 
 func (UserResponse) TableName() string { return "users" }
+
+// TODO: check Auth
