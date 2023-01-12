@@ -11,3 +11,14 @@ type Transaction struct {
 	TicketID uint
 	Ticket   Tickets `gorm:"foreignKey:TicketID"`
 }
+
+type TransactionRequest struct {
+	BillerID uint
+	ChildQty int
+	AdultQty int
+	TicketID uint
+}
+
+func (TransactionRequest) TableName() string {
+	return "transactions"
+}

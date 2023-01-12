@@ -8,7 +8,7 @@ import (
 
 type TicketRepo interface {
 	CreateTicket(models.Tickets) (models.Tickets, error)
-	GetTicket() ([]models.Tickets, error)
+	GetTickets() ([]models.Tickets, error)
 }
 
 func RepoTicket(db *gorm.DB) *repo {
@@ -23,7 +23,7 @@ func (r *repo) CreateTicket(tickets models.Tickets) (models.Tickets, error) {
 
 }
 
-func (r *repo) GetTicket() ([]models.Tickets, error) {
+func (r *repo) GetTickets() ([]models.Tickets, error) {
 	var tickets []models.Tickets
 	e := r.db.Find(&tickets).Error
 	return tickets, e
