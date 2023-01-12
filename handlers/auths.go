@@ -75,7 +75,7 @@ func (h *authRepoHandler) CreateUser(res http.ResponseWriter, req *http.Request)
 	datares, err := h.AuthRepo.CreateUser(user)
 
 	if err != nil {
-		res.WriteHeader(http.StatusInternalServerError)
+		res.WriteHeader(http.StatusBadRequest)
 		response := dto.ErrorResult{Code: http.StatusInternalServerError, Message: err.Error()}
 		json.NewEncoder(res).Encode(response)
 		return

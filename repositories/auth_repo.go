@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"errors"
 	"go-api/models"
 
 	log "github.com/sirupsen/logrus"
@@ -17,6 +18,12 @@ func RepoAuth(db *gorm.DB) *repo {
 }
 
 func (r *repo) CreateUser(user models.User) (models.User, error) {
+	var datauser models.User
+	var emailcount int64
+	r.db.Where("email = ?", user.Email).First(&datauser).Count(&emailcount)
+	if emailcount > 0 {
+		return datauser, errors.New("email sudah digunakan")
+	}
 	e := r.db.Create(&user).Error
 
 	return user, e
