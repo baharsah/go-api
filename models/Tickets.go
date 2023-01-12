@@ -16,4 +16,6 @@ type Tickets struct {
 	StationEnd     Stations `gorm:"foreignKey:StationEndID"`
 	Price          int
 	Qty            int
+	CreatorID      uint
+	Creator        User `gorm:"foreignKey:CreatorID"`
 }

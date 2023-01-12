@@ -4,6 +4,7 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
+	Username    string
 	Name        string
 	Email       string
 	Password    string
@@ -17,7 +18,8 @@ type UserResponse struct {
 	Email       string
 	Username    string
 	IsAdmin     bool
-	Transaction []Transaction `gorm:"foreignKey:BillerID"`
+	Transaction []Transaction `gorm:"foreignkey:BillerID"`
+	Tickets     []Tickets     `gorm:"foreignkey:CreatorID"`
 }
 
 func (UserResponse) TableName() string { return "users" }
