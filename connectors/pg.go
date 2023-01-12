@@ -1,11 +1,8 @@
 package connectors
 
 import (
-	"os"
-
 	log "github.com/sirupsen/logrus"
 
-	"github.com/joho/godotenv"
 	postgres "gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,13 +10,13 @@ import (
 var DB *gorm.DB
 
 func DBInit() {
-	errw := godotenv.Load(".env")
-	if errw != nil {
+	// errw := godotenv.Load(".env")
+	// if errw != nil {
 
-	}
+	// }
 
 	var err error
-	dsn := os.Getenv("MYSQL_DSN_CONNECTION_DETAILS")
+	dsn := "host=localhost user=postgres password=backendish dbname=db port=5432 sslmode=disable TimeZone=Asia/Jakarta"
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
